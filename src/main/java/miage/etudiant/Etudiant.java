@@ -31,8 +31,11 @@ public class Etudiant {
 
     @Override
     public int hashCode() {
-        int result = nom.hashCode();
-        result = 31 * result + prenom.hashCode();
+        
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+        result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
         return result;
     }
 

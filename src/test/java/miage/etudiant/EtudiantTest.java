@@ -88,11 +88,28 @@ public class EtudiantTest {
         assertEquals(etudiant1.hashCode(), etudiant2.hashCode(), "Deux étudiants égaux devraient avoir le même hash code.");
     }
 
+    // Test du hashCode avec des étudiants différents
     @Test
     void testHashCodeWithDifferentEtudiant() {
         Etudiant etudiant1 = new Etudiant(NOM, PRENOM);
         Etudiant etudiant2 = new Etudiant("Dupont", "Jean");
         assertEquals(false, etudiant1.hashCode() == etudiant2.hashCode(), "Deux étudiants différents ne devraient pas avoir le même hash code.");
-    }   
+    }  
+    
+    //(nom == null)
+
+    @Test
+    void testHashCodeWithNullNom() {
+        Etudiant etudiant = new Etudiant(null, PRENOM);
+        assertDoesNotThrow(() -> etudiant.hashCode(), "Le hash code devrait être calculé sans lancer d'exception même si le nom est null.");
+    }
+
+    //(prenom == null)
+
+    @Test
+    void testHashCodeWithNullPrenom() {
+        Etudiant etudiant = new Etudiant(NOM, null);
+        assertDoesNotThrow(() -> etudiant.hashCode(), "Le hash code devrait être calculé sans lancer d'exception meme si le prrenom est null.");
+    }
 
 }
